@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BMW Motors</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #111;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .navbar {
+      background-color: #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .navbar a:hover {
+      color: #007bff;
+    }
+
+    .hero {
+      height: 100vh;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)), 
+        url('https://cdn.bmwblog.com/wp-content/uploads/2023/03/BMW-i7-M70-xDrive-01.jpg') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      perspective: 1000px;
+    }
+
+    .hero-content {
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 15px;
+    }
+
+    .hero-content h1 {
+      font-size: 50px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px #000;
+    }
+
+    .hero-content a {
+      background-color: #fff;
+      color: #000;
+      padding: 12px 30px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .hero-content a:hover {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    /* Glow effect button animation */
+    .hero-content a.glow:hover {
+      box-shadow: 0 0 15px #007bff, 0 0 30px #007bff;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg" alt="BMW" height="40">
+    <div>
+      <a href="index.html">Home</a>
+      <a href="models.html">Models</a>
+      <a href="test-drive.html">Book Test Drive</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="hero" id="hero">
+    <div class="hero-content" id="heroBox">
+      <h1>Experience Sheer Driving Pleasure</h1>
+      <a href="models.html" class="glow">Explore Models</a>
+    </div>
+  </div>
+
+  <!-- JavaScript for 3D hover effect -->
+  <script>
+    const hero = document.getElementById('hero');
+    const heroBox = document.getElementById('heroBox');
+
+    hero.addEventListener('mousemove', (e) => {
+      let xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+      let yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+      heroBox.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+    });
+
+    hero.addEventListener('mouseleave', () => {
+      heroBox.style.transform = `rotateY(0deg) rotateX(0deg)`;
+    });
+  </script>
+
+</body>
+</html>
